@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'org.ubdev'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-artemis'
+    runtimeOnly 'org.apache.activemq:artemis-jakarta-server'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
