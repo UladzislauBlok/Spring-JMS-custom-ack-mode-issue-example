@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class Listener {
 
     /**
-     * {1} client acknowledge
-     * {}
+     * {1} Manual acknowledge
+     * {2} Listener container will ack message for second time after invocation
      */
     @JmsListener(destination = "target", containerFactory = "myFactory")
     public void readMessage(Message message) throws JMSException {
