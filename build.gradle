@@ -10,10 +10,14 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://repo.spring.io/snapshot"
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-artemis'
+    implementation("org.springframework:spring-jms:6.2.6-SNAPSHOT")
     runtimeOnly 'org.apache.activemq:artemis-jakarta-server'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

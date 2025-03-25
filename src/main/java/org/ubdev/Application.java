@@ -16,15 +16,13 @@ import org.springframework.jms.core.JmsTemplate;
 @EnableJms
 public class Application {
 
-    /**
-     * @see TibAckMode
-     */
     @Bean
     public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setSessionTransacted(false);
         factory.setSessionAcknowledgeMode(ActiveMQJMSConstants.INDIVIDUAL_ACKNOWLEDGE); // or Tibco EXPLICIT_CLIENT_ACKNOWLEDGE(23)
+        factory.setAcknowledgeAfterListener(false);
         return factory;
     }
 
